@@ -1,0 +1,131 @@
+/* Large screen  */
+@media (max-width: 1400px) {
+    html {
+        font-size: 20px;
+    }
+}
+  
+/* Tablet screen  */
+@media (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+    }
+
+/* Mobile screen  */
+@media (max-width: 450px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+body {
+    --accent-color: orangered;
+    --background-color: white;
+    --text-color: #333;
+    --button-text-color: var(--background-color);
+    --content: "Good Morning!";
+    --transition-delay: 2s;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    transition: var(--transition-delay);
+    
+    background-color: var(--background-color);
+}
+
+body.dark {
+    --accent-color: #D0D066;
+    --background-color: #333;
+    --text-color: white;
+    --content: "Good Night!";
+}
+
+.title {
+    font-size: 2rem;
+
+    color: var(--text-color);
+    transition: color var(--transition-delay);
+}
+
+.title:before {
+    content: var(--content);
+}
+
+.theme-toggle-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 10em;
+    padding: .2em .5em;
+    cursor: pointer;
+    transition: transform .5s;
+    
+    color: var(--button-text-color);
+    background-color: var(--accent-color);
+    transition: color, background-color, var(--transition-delay);
+}
+
+.theme-toggle-button:hover {
+    transform: scale(1.1);
+}
+
+.toggle-icon {
+    width: 8vmin;
+    height: 8vmin;
+    margin-right: .2em;
+    
+    fill: var(--background-color);
+    transition: var(--transition-delay);
+}
+
+.sun-moon-container {
+    --rotation: 360;
+
+    position: absolute;
+    top: 0;
+    /* To make circular path */
+    height: 200vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+
+    transform: rotate(calc(var(--rotation) * 1deg));
+    transition: transform var(--transition-delay);
+}
+
+.sun,
+.moon {
+    position: absolute;
+    width: 20vmin;
+    height: 20vmin;
+    fill: var(--accent-color);
+    transition: opacity, fill, var(--transition-delay);
+}
+
+.sun {
+    top: 5%;
+    opacity: 1;
+}
+
+.dark .sun {
+    opacity: 0;
+}
+
+.moon {
+    bottom: 5%;
+    opacity: 0;
+    rotate: 180deg;
+}
+
+.dark .moon {
+    opacity: 1;
+}
